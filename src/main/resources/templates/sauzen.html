@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="nl" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <link rel="icon" href="images/frida.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/frida.css">
+    <title>Sauzen</title>
+</head>
+<body>
+<h2>Onze sauzen:</h2>
+<ul>
+    <li th:each="saus:${sauzen}" th:object="${saus}">
+        <span th:text="*{naam}"></span>
+        <ul>
+            <li th:each="ingredient:*{ingredienten}" th:text="${ingredient}"></li>
+        </ul>
+    </li>
+</ul>
+</body>
+</html>
