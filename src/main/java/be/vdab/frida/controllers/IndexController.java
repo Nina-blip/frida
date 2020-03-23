@@ -1,6 +1,9 @@
 package be.vdab.frida.controllers;
 
+import be.vdab.frida.domain.Adres;
+import be.vdab.frida.domain.Gemeente;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,13 +15,19 @@ import java.time.LocalTime;
 @Controller
 @RequestMapping("/")
 class IndexController {
-    @GetMapping
-    public ModelAndView index(){
+    private String boodschap(){
         int dag = LocalDate.now().getDayOfWeek().getValue();
         if (dag == 1 || dag == 4){
-            return new ModelAndView("index", "boodschap", "gesloten");
+            return "gesloten";
         } else {
-            return new ModelAndView("index", "boodschap", "open");
+            return "open";
         }
+    }
+
+    @GetMapping
+    public ModelAndView index(){
+        ModelAndView modelAndView = new ModelAndView("index", "boodschap", boodschap());
+        modelAndView.addObject("frituurAdres", new Adres("Zandstraat ", "133", new Gemeente("Turnhout", 2300)));
+        return modelAndView;
     }
 }

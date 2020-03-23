@@ -6,7 +6,9 @@
     <link rel="stylesheet" href="css/frida.css">
 </head>
 <body>
-<h1>frituur Frida</h1>
+<h1>Frituur Frida</h1>
 <h2>Vandaag zijn wij <span th:text="${boodschap}"></span></h2>
+<h2>U vindt ons op het volgende adres:<span th:object="${frituurAdres}" th:text="| *{straat} *{huisNr}
+*{gemeente.postcode} *{gemeente.naam}|"></span></h2>
 </body>
 </html>
