@@ -1,7 +1,30 @@
 body{
     background-color: bisque;
+    text-align: center;
 }
 
 h1{
     color: coral;
+}
+
+nav ul {
+    background-color: white;
+    padding: 0.4em 0;
+    text-align: left;
+}
+
+nav li {
+    display: inline;
+}
+
+nav li a {
+    color: darkred;
+    font-weight: bold;
+    padding-left: 0.5em;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+nav li a:hover {
+    color: pink;
 }
