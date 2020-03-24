@@ -1,30 +1,51 @@
-body{
+body {
     background-color: bisque;
     text-align: center;
 }
 
-h1{
+header {
+    text-align: left;
+}
+
+h1 {
     color: coral;
 }
 
 nav ul {
-    background-color: white;
+    background-color: coral;
     padding: 0.4em 0;
-    text-align: left;
+}
+
+ul {
+    list-style-type: none;
 }
 
 nav li {
     display: inline;
 }
 
-nav li a {
+nav li a, li a {
     color: darkred;
     font-weight: bold;
     padding-left: 0.5em;
     text-decoration: none;
     vertical-align: middle;
+
 }
 
-nav li a:hover {
+nav li a:hover, li a:hover {
     color: pink;
+}
+
+dd,dt {
+    margin-left: 0;
+}
+dt {
+    margin-top: 0.5em;
+}
+dd {
+    font-weight: bold;
+}
+dd ul {
+    margin-top: 0;
 }

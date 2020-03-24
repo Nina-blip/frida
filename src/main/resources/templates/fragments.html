@@ -1,7 +1,11 @@
-<nav th:fragment="menu" xmlns:th='http://www.thymeleaf.org'>
-    <li><a th:href="@{/}">Home</a></li>
-    <li><a th:href="@{sauzen}">Sauzen</a></li>
-</nav>
+<header th:fragment="menu" xmlns:th='http://www.thymeleaf.org'>
+    <nav >
+        <ul>
+        <li><a th:href="@{/}">Home</a></li>
+        <li><a th:href="@{/sauzen}">Sauzen</a></li>
+        </ul>
+    </nav>
+</header>
 
 <head th:fragment="head(title)" xmlns:th='http://www.thymeleaf.org'>
     <link rel="icon" th:href="@{/images/frida.ico}" type="image/x-icon">

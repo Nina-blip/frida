@@ -3,10 +3,12 @@ package be.vdab.frida.controllers;
 
 import be.vdab.frida.domain.Saus;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Arrays;
 
 @Controller
 @RequestMapping("sauzen")
@@ -20,5 +22,13 @@ class SauzenController {
     @GetMapping
     public ModelAndView sauzen(){
         return new ModelAndView("sauzen", "sauzen", sauzen);
+    }
+
+    @GetMapping("{id}")
+    public ModelAndView saus(@PathVariable long id){
+        ModelAndView modelAndView = new ModelAndView("saus");
+        Arrays.stream(sauzen).filter(saus -> saus.getId() == id).findFirst()
+                .ifPresent(saus -> modelAndView.addObject(saus));
+        return modelAndView;
     }
 }
