@@ -5,6 +5,7 @@
 <body>
 <header th:replace="fragments::menu"></header>
 <h1>Frituur Frida</h1>
+<h2 th:if="${bezocht}">Welkom terug</h2>
 <h2>Vandaag zijn wij <span th:text="${boodschap}"></span></h2>
 <h2>U vindt ons op het volgende adres:<span th:object="${frituurAdres}" th:text="| *{straat} *{huisNr}
 *{gemeente.postcode} *{gemeente.naam}|"></span></h2>
