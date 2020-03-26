@@ -49,3 +49,10 @@ dd {
 dd ul {
     margin-top: 0;
 }
+
+.naastMekaar {
+    padding-left: 0;
+}
+.naastMekaar li {
+    display:inline;
+}
