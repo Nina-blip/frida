@@ -2,6 +2,8 @@ package be.vdab.frida.repositories;
 
 import be.vdab.frida.domain.Saus;
 import be.vdab.frida.exceptions.SausRepositoryException;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.io.*;
@@ -15,6 +17,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Component
+@Qualifier("CSV")
 public class CSVSausRepository implements SausRepository {
     private static final Path PATH = Paths.get("G:/Mijn Drive/Enterprise Java/Spring Fundamentals/data/sauzen.csv");
 
