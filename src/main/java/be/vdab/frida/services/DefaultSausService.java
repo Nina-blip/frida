@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 public class DefaultSausService implements SausService {
     private final SausRepository sausRepository;
 
-    public DefaultSausService(@Qualifier("CSV") SausRepository sausRepository){
+    public DefaultSausService(@Qualifier("Properties") SausRepository sausRepository){
         this.sausRepository = sausRepository;
 
     }

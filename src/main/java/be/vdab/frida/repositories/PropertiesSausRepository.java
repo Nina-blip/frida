@@ -3,6 +3,7 @@ package be.vdab.frida.repositories;
 import be.vdab.frida.domain.Saus;
 import be.vdab.frida.exceptions.SausRepositoryException;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -18,17 +19,21 @@ import java.util.stream.Collectors;
 @Component
 @Qualifier("Properties")
 public class PropertiesSausRepository implements SausRepository {
-    private static final Path PATH = Paths.get("G:/Mijn Drive/Enterprise Java/Spring Fundamentals/data/sauzen.properties");
+    private final Path path ;
+
+    public PropertiesSausRepository(@Value("${propertiesSausPath}")Path path) {
+        this.path = path;
+    }
 
     @Override
     public List<Saus> findAll() {
         try{
-            return Files.lines(PATH)
+            return Files.lines(path)
                     .filter(regel -> !regel.isEmpty())
                     .map(regel -> maakSaus(regel))
                     .collect(Collectors.toList());
         } catch (IOException ex){
-            throw new SausRepositoryException("De ingevoerde URL klopt niet: " + PATH);
+            throw new SausRepositoryException("De ingevoerde URL klopt niet: " + path);
         }
     }
 
