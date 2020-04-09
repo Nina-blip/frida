@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 import be.vdab.frida.exceptions.SnackNietGevondenException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
