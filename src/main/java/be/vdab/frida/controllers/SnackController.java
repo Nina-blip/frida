@@ -1,7 +1,9 @@
 package be.vdab.frida.controllers;
 
+import be.vdab.frida.forms.BeginletterForm;
 import be.vdab.frida.services.SnackService;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,12 +20,12 @@ class SnackController {
     }
 
     @GetMapping("alfabet")
-    public ModelAndView snacksAlfabet(){
+    public ModelAndView snacksAlfabet() {
         return new ModelAndView("snackAlfabet", "alfabet", alfabet);
     }
 
     @GetMapping("{id}")
-    public ModelAndView snack(@PathVariable long id){
+    public ModelAndView snack(@PathVariable long id) {
         ModelAndView modelAndView = new ModelAndView("snack");
         snackService.read(id).ifPresent(snack -> modelAndView.addObject(snack));
         return modelAndView;
@@ -34,4 +36,19 @@ class SnackController {
         return new ModelAndView("snackAlfabet", "alfabet", alfabet)
                 .addObject("snacks", snackService.findByBeginNaam(String.valueOf(letter)));
     }
+
+    @GetMapping("beginletter/form")
+    public ModelAndView beginletterForm() {
+        return new ModelAndView("beginletter").addObject(new BeginletterForm(""));
+    }
+
+    @GetMapping("beginletter")
+    public ModelAndView beginletter(BeginletterForm form, Errors errors) {
+        ModelAndView modelAndView = new ModelAndView("beginletter");
+        if (errors.hasErrors()) {
+            return modelAndView;
+        }
+        return modelAndView.addObject("snacks", snackService.findByBeginNaam(form.getBeginletter()));
+    }
+
 }
