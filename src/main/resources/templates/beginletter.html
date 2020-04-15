@@ -6,7 +6,7 @@
 <h1>Zoek een snack</h1>
 <form th:object="${beginletterForm}"
       method="get" th:action="@{/snacks/beginletter}">
-<label>Beginletter:<span th:errors="*{beginletter}"></span><input th:field="*{beginletter}" autofocus></label>
+<label>Beginletter:<span th:errors="*{beginletter}"></span><input th:field="*{beginletter}" autofocus required type="text"></label>
     <button>Zoeken</button>
 </form>
 <ul th:if="${snacks} != null">
