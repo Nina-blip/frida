@@ -1,10 +1,14 @@
 package be.vdab.frida.domain;
 
+import javax.validation.constraints.*;
 import java.math.BigDecimal;
 
 public class Snack {
     private final long id;
+    @NotBlank
     private final String naam;
+    @NotNull
+    @DecimalMin("0")
     private final BigDecimal prijs;
 
     public Snack(long id, String naam, BigDecimal prijs) {
