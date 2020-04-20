@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="nl" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments::head(title='Frietspel')"></head>
+<body>
+<nav th:replace="fragments::menu"></nav>
+<h1>Zoek de friet</h1>
+<form th:action="@{/frietspel/zoeken/opendeur}" method="post">
+    <button th:each="deur:${frietspel.deuren}" name="index"
+            th:object="${deur}" th:value="*{index}">
+        <img th:if="*{geopend} and *{bevatFriet}" th:src="@{/images/gevonden.png}" alt="gevonden">
+        <img th:if="*{geopend} and not *{bevatFriet}" th:src="@{/images/deuropen.png}" alt="deur open">
+        <img th:if="not *{geopend}"
+             th:src="@{/images/deurtoe.png}" alt="deur toe">
+    </button>
+</form>
+<form th:action="@{/frietspel/zoeken/nieuwspel}" method="post">
+    <button>Nieuw spel</button>
+</form>
+</form>
+</body>
+
