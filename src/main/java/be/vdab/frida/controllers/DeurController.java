@@ -24,6 +24,7 @@ public class DeurController {
     public ModelAndView frietspel() {
         return new ModelAndView("frietspel").addObject(frietspel);
     }
+
     @PostMapping("zoeken/nieuwspel")
     public String nieuwSpel() {
         frietspel.reset();
