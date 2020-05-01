@@ -85,6 +85,7 @@ class SauzenController {
     public String radenNieuwSpel() {
         return "redirect:/sauzen/raden";
     }
+
     @PostMapping(value = "raden")
     public ModelAndView raden(@Valid SausRadenForm form, Errors errors) {
         if (errors.hasErrors()) {
