@@ -1,28 +1,27 @@
 <!DOCTYPE html>
 <html lang="nl" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments::head(title='Gastenboek')"></head>
+<head th:replace="fragments::head(title='Gastenboek')">
+</head>
 <body>
-<script th:src="@{/js/preventDoubleSubmit.js}" defer></script>
-<script th:src="@{/js/messages.js}" defer></script>
+<script th:src="@{/js/gastenboek.js}" defer></script>
 <nav th:replace="fragments::menu"></nav>
 <h1>Gastenboek</h1>
-<div th:if="${gastenboekToevoegen}">
-    <form th:object="${gastenboekEntry}" method="post" th:action="@{toevoegen/entry}">
-        <label>Naam:<span th:errors="*{naam}"></span>
-            <input th:field="*{naam}" type="text" required autofocus></label>
-        <label>Bericht:<span th:errors="*{boodschap}"></span>
-            <input th:field="*{boodschap}" type="text" required></label>
-        <button>Toevoegen</button>
-    </form>
-</div>
-<span th:if="${gastenboekToevoegen} == false" th:href="@{/toevoegen}"><a>Toevoegen</a></span>
+<form th:object="${gastenboekEntry}" method="post" th:action="@{/gastenboek}" class="onderElkaar">
+    <span class="fout" th:errors="*{naam}"></span>
+    <label>Naam:
+        <input th:field="*{naam}" required autofocus></label>
+    <span class="fout" th:errors="*{boodschap}"></span>
+    <label>Bericht:<input th:field="*{boodschap}" required></label>
+    <button id="submit">Toevoegen</button>
+</form>
+<a th:href="@{/gastenboek}" id="knop">Toevoegen</a>
 <div>
     <ul>
-       <li th:each="entry:${boodschappen}" th:object="${entry}">
-           <span th:text="*{datum}"><em></em></span>
-           <span th:text="*{naam}"><em></em></span>
-           <span th:text="*{boodschap}"></span>
-       </li>
+        <li th:each="entry:${boodschappen}" th:object="${entry}">
+            <span th:text="${entry.getDatumAlsString()}"><em></em></span>
+            <span th:text="*{naam}"><em></em></span>
+            <span th:text="*{boodschap}"></span>
+        </li>
     </ul>
 </div>
 </body>

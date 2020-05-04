@@ -8,11 +8,15 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class GastenboekEntry {
-    private final LocalDate datum;
+    private LocalDate datum;
     @NotBlank
-    private final String naam;
+    private String naam;
     @NotBlank
-    private final String boodschap;
+    private String boodschap;
+
+
+    public GastenboekEntry(){
+    }
 
     public GastenboekEntry(String naam, String boodschap) {
         this.datum =  LocalDate.now();

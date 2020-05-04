@@ -56,3 +56,16 @@ dd ul {
 .naastMekaar li {
     display:inline;
 }
+
+.onderElkaar label{
+    display:block;
+    margin-bottom: 5px;
+}
+
+.fout{
+    color: red;
+}
+
+.verborgen{
+    display: none;
+}
