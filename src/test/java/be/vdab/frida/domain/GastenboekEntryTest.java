@@ -26,7 +26,7 @@ class GastenboekEntryTest {
 
     @BeforeEach
     void beforeEach() {
-        entries = new GastenboekEntry("tester", "test");
+        entries = new GastenboekEntry(0, "tester", "test");
     }
 
     @Test
@@ -57,7 +57,7 @@ class GastenboekEntryTest {
     @Test
     @DisplayName("naam mag geen null bevatten")
     void naamMagGeenNullBevatten() {
-        GastenboekEntry entry =  new GastenboekEntry(null, "test");
+        GastenboekEntry entry =  new GastenboekEntry(0, null, "test");
         Set<ConstraintViolation<GastenboekEntry>> constraintViolations = validator.validate(entry);
         assertEquals(1, constraintViolations.size());
         assertEquals("moet meer dan enkel spaties bevatten", constraintViolations.iterator().next().getMessage());
@@ -66,7 +66,7 @@ class GastenboekEntryTest {
     @Test
     @DisplayName("Boodschap mag geen null bevatten")
     void boodschapMagGeenNullBevatten() {
-        GastenboekEntry entry =  new GastenboekEntry("tester", null);
+        GastenboekEntry entry =  new GastenboekEntry(0, "tester", null);
         Set<ConstraintViolation<GastenboekEntry>> constraintViolations = validator.validate(entry);
         assertEquals(1, constraintViolations.size());
         assertEquals("moet meer dan enkel spaties bevatten", constraintViolations.iterator().next().getMessage());
@@ -76,7 +76,7 @@ class GastenboekEntryTest {
     @ValueSource(strings = {"", "  "})
     @DisplayName("naam mag geen lege String zijn of enkel spaties")
     void naamMagGeenLegeStringZijnOfEnkelSpaties(String spaties) {
-        GastenboekEntry entry =  new GastenboekEntry(spaties, "test");
+        GastenboekEntry entry =  new GastenboekEntry(0, spaties, "test");
         Set<ConstraintViolation<GastenboekEntry>> constraintViolations = validator.validate(entry);
         assertEquals(1, constraintViolations.size());
         assertEquals("moet meer dan enkel spaties bevatten", constraintViolations.iterator().next().getMessage());
@@ -86,7 +86,7 @@ class GastenboekEntryTest {
     @ValueSource(strings = {"", "  "})
     @DisplayName("Boodschap mag geen lege String zijn of enkel spaties")
     void boodschapMagGeenLegeStringZijnOfEnkelSpaties(String spaties){
-        GastenboekEntry entry =  new GastenboekEntry("tester", spaties);
+        GastenboekEntry entry =  new GastenboekEntry(0, "tester", spaties);
         Set<ConstraintViolation<GastenboekEntry>> constraintViolations = validator.validate(entry);
         assertEquals(1, constraintViolations.size());
         assertEquals("moet meer dan enkel spaties bevatten", constraintViolations.iterator().next().getMessage());

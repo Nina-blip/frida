@@ -3,8 +3,10 @@ package be.vdab.frida.controllers;
 import be.vdab.frida.domain.GastenboekEntry;
 import be.vdab.frida.services.GastenboekService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -24,12 +26,12 @@ class GastenboekController {
     public ModelAndView gastenboek(){
         ModelAndView modelAndView = new ModelAndView("gastenboek");
         modelAndView.addObject("boodschappen", gastenboekService.findAll());
-        modelAndView.addObject(new GastenboekEntry(null, null));
+        modelAndView.addObject(new GastenboekEntry(0, null, null));
         return modelAndView;
     }
     
     @PostMapping
-    public String entryToevoegen(@Valid GastenboekEntry entry, Errors errors){
+    public String entryToevoegen(@Valid @ModelAttribute("gastenboekEntry") GastenboekEntry entry, Errors errors){
         if (errors.hasErrors()){
             return "gastenboek";
         }

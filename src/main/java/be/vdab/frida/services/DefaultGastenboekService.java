@@ -18,8 +18,8 @@ class DefaultGastenboekService implements GastenboekService {
 
     @Override
     @Transactional
-    public void toevoegen(GastenboekEntry entry) {
-        repository.toevoegen(entry);
+    public long toevoegen(GastenboekEntry entry) {
+        return repository.toevoegen(entry);
     }
 
     @Override

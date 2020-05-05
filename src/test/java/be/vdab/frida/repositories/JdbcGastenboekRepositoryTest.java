@@ -31,8 +31,8 @@ private static final String GASTENBOEKENTRIES = "gastenboekentries";
 
     @Test
     void toevoegenMaaktEenGastenBoekEntryCorrectAan(){
-        repository.toevoegen(new GastenboekEntry("tester3", "test3"));
-        assertThat(super.countRowsInTableWhere(GASTENBOEKENTRIES,"naam = 'tester3'")).isOne();
+        long id = repository.toevoegen(new GastenboekEntry(0, "tester3", "test3"));
+        assertThat(super.countRowsInTableWhere(GASTENBOEKENTRIES,"id =" + id)).isOne();
     }
 
 }

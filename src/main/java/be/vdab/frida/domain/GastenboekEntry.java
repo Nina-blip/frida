@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class GastenboekEntry {
+    private long id;
     private LocalDate datum;
     @NotBlank
     private String naam;
@@ -18,13 +19,15 @@ public class GastenboekEntry {
     public GastenboekEntry(){
     }
 
-    public GastenboekEntry(String naam, String boodschap) {
+    public GastenboekEntry(long id, String naam, String boodschap) {
+        this.id = id;
         this.datum =  LocalDate.now();
         this.naam = naam;
         this.boodschap = boodschap;
     }
 
-    public GastenboekEntry(LocalDate datum, String naam, String boodschap){
+    public GastenboekEntry(long id, LocalDate datum, String naam, String boodschap){
+        this.id = id;
         this.datum= datum;
         this.naam = naam;
         this.boodschap = boodschap;
@@ -45,5 +48,9 @@ public class GastenboekEntry {
 
     public String getBoodschap() {
         return boodschap;
+    }
+
+    public long getId() {
+        return id;
     }
 }
