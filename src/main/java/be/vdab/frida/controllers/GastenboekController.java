@@ -31,11 +31,11 @@ class GastenboekController {
     }
     
     @PostMapping
-    public String entryToevoegen(@Valid @ModelAttribute("gastenboekEntry") GastenboekEntry entry, Errors errors){
+    public String entryToevoegen(@Valid @ModelAttribute("gastenboekEntry") GastenboekEntry gastenboekEntry, Errors errors){
         if (errors.hasErrors()){
             return "gastenboek";
         }
-        gastenboekService.toevoegen(entry);
+        gastenboekService.toevoegen(gastenboekEntry);
         return "redirect:/gastenboek";
     }
 
