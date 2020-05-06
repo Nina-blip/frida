@@ -11,11 +11,8 @@ gastenboekForm.onsubmit = formSubmitten;
 
 function formSubmitten(){
     const fouteInputs = document.querySelectorAll("input:invalid");
-    for (const input of fouteInputs){
-        input.setCustomValidity("Verplicht");
-    }
-    /*if (fouteInputs.length === 0) {
-        document.querySelector("form").classname = "verborgen";
+    if (fouteInputs.length === 0) {
+        document.querySelector("form").classList.add("verborgen");
         document.getElementById("knop").classList.remove("verborgen");
-    }*/
+    }
 }

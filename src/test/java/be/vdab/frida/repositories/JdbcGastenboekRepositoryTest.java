@@ -35,4 +35,10 @@ private static final String GASTENBOEKENTRIES = "gastenboekentries";
         assertThat(super.countRowsInTableWhere(GASTENBOEKENTRIES,"id =" + id)).isOne();
     }
 
+    @Test
+    void verwijderenWerktCorrect(){
+        long id = repository.toevoegen(new GastenboekEntry(0, "tester3", "test3"));
+        repository.delete(id);
+        assertThat(super.countRowsInTableWhere(GASTENBOEKENTRIES, "id=" + id)).isZero();
+    }
 }

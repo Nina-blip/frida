@@ -21,6 +21,7 @@ class JdbcGastenboekRepository implements GastenboekRepository {
         this.template = template;
         this.simpleJdbcInsert = new SimpleJdbcInsert(template);
         simpleJdbcInsert.withTableName("gastenboekentries");
+        simpleJdbcInsert.usingGeneratedKeyColumns("id");
     }
 
     @Override
@@ -35,7 +36,13 @@ class JdbcGastenboekRepository implements GastenboekRepository {
 
     @Override
     public List<GastenboekEntry> findAll() {
-        String sql="select id,datum,naam,boodschap from gastenboekentries order by datum desc";
+        String sql="select id,datum,naam,boodschap from gastenboekentries order by datum desc, id desc";
         return template.query(sql, gastenBoekMapper);
+    }
+
+    @Override
+    public void delete(long id) {
+        String sql="delete from gastenboekentries where id ="+id;
+        template.update(sql);
     }
 }

@@ -38,7 +38,7 @@ public class GastenboekEntry {
     }
 
     public String getDatumAlsString(){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-M-yy");
         return formatter.format(datum);
     }
 

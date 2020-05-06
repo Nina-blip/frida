@@ -5,25 +5,32 @@
 <body>
 <script th:src="@{/js/gastenboek.js}" defer></script>
 <nav th:replace="fragments::menu"></nav>
+<div class="wrapper">
 <h1>Gastenboek</h1>
-<form th:object="${gastenboekEntry}" method="post" th:action="@{/gastenboek}" class="onderElkaar">
+<form th:object="${gastenboekForm}" method="post" th:action="@{/gastenboek}" class="onderElkaar verborgen">
     <span class="fout" th:errors="*{naam}"></span>
     <label>Naam:
         <input th:field="*{naam}" required autofocus></label>
     <span class="fout" th:errors="*{boodschap}"></span>
     <label>Bericht:<input th:field="*{boodschap}" required></label>
     <input type="hidden" name="id" value="0">
-    <button id="submit">Toevoegen</button>
+    <button type="submit">Toevoegen</button>
 </form>
-<a th:href="@{/gastenboek}" id="knop">Toevoegen</a>
-<div>
+<a href="#" id="knop">Toevoegen</a>
+
+<div class="commentaarDiv">
+    <form method="post" th:action="@{/gastenboek/verwijderen}">
     <ul>
         <li th:each="entry:${boodschappen}" th:object="${entry}">
-            <span th:text="${entry.getDatumAlsString()}"><em></em></span>
-            <span th:text="*{naam}"><em></em></span>
+            <input type="checkbox" name="id" th:value="*{id}">
+            <strong><span th:text="${entry.getDatumAlsString()}" value="*{datum}"></span></strong>
+            <strong><span th:text="*{naam}"></span></strong>
             <span th:text="*{boodschap}"></span>
         </li>
     </ul>
+        <button>Verwijderen</button>
+    </form>
+</div>
 </div>
 </body>
 </html>

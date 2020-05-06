@@ -7,4 +7,5 @@ import java.util.List;
 public interface GastenboekService {
     long toevoegen(GastenboekEntry entry);
     List<GastenboekEntry> findAll();
+    void delete(long id);
 }

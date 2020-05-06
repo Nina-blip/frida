@@ -37,6 +37,11 @@ nav li a:hover, li a:hover {
     color: pink;
 }
 
+.wrapper{
+    margin: auto 0px;
+    text-align: center;
+}
+
 dd,dt {
     margin-left: 0;
 }
@@ -62,10 +67,22 @@ dd ul {
     margin-bottom: 5px;
 }
 
+.onderElkaar input{
+    display: block;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
 .fout{
     color: red;
 }
 
 .verborgen{
     display: none;
+}
+
+.commentaarDiv{
+    text-align: center;
+    width: 300px;
+    margin: 0px 33%;
 }
